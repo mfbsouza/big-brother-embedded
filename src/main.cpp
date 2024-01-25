@@ -26,7 +26,7 @@ enum State {
 };
 
 unsigned char usr_tag[UID_MAX_SIZE];
-String db_server_url = "http://192.168.1.7:3030";
+String db_server_url = "http://192.168.197.166:3030";
 
 void state_machine(void);
 String bytearray_to_hex_string(const unsigned char *buf, size_t size);
@@ -230,6 +230,7 @@ void state_machine(void) {
 		key = keypad_getkey();
 		if (key) {
 			if (key == '*') {
+				lcd_write("Lido! Aguarde...", 16);
 				last_state = state;
 				state = GET_EQUIP;
 			} else if (key == '#' && equip_input.length() > 0) {
